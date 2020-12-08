@@ -1,0 +1,19 @@
+dat = open('input', 'r').read().rstrip().split('\n\n')
+dat = list(map(lambda x: x.replace('\n', ' ').split(' '), dat))
+cnt = 0
+
+def prefix(s):
+    return s.split(':')[0]
+
+wanted = {'byr', 'iyr', 'hgt', 'eyr', 'ecl', 'pid', 'cid', 'hcl'}
+for pas in dat:
+    real = set([])
+    for item in pas:
+        real.add(prefix(item))
+    real.add('cid')
+    if real == wanted:
+        cnt += 1
+print(cnt)
+print(len(dat))
+
+print(dat[:10])
